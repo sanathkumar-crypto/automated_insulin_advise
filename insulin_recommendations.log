@@ -1,0 +1,1184 @@
+2025-10-25 01:14:18,089 - app - WARNING - OAuth credentials not configured. Authentication will be disabled.
+2025-10-25 01:14:20,372 - app - WARNING - OAuth credentials not configured. Authentication will be disabled.
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 400,
+  "GRBS2": 380,
+  "GRBS3": 360,
+  "GRBS4": 340,
+  "GRBS5": 320,
+  "Insulin1": 0,
+  "Insulin2": 0,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: False
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - GRBS values: [400, 380, 360, 340, 320]
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 400
+2025-10-25 01:14:20,374 - app.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 7 to 8
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - IV Algorithm - Level 8: GRBS=400, Rate=7.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 7.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 8,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 380,
+  "GRBS2": 400,
+  "GRBS3": 350,
+  "GRBS4": 320,
+  "GRBS5": 300,
+  "Insulin1": 2,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "sc",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: False
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - GRBS values: [380, 400, 350, 320, 300]
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Using IV algorithm: SC route with dual_inotropes=False or high GRBS
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 380
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 7 to 8
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - IV Algorithm - Level 8: GRBS=380, Rate=7.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 7.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 8,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:20,375 - app.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - GRBS values: [180, 170, 160, 150, 140]
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 180
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Basal Bolus: MAINTAINING level 2
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 2: GRBS=180, Dose=2 IU, Action=Low dose
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 2,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 2,
+  "action": "Low dose"
+}
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 120,
+  "GRBS2": 130,
+  "GRBS3": 125,
+  "GRBS4": 135,
+  "GRBS5": 140,
+  "Insulin1": 0,
+  "Insulin2": 0,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - GRBS values: [120, 130, 125, 135, 140]
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 120
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Basal Bolus: Moving DOWN from level 1 to 1 (reading < 140)
+2025-10-25 01:14:20,376 - app.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 1: GRBS=120, Dose=0 IU, Action=No insulin
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 0,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 1,
+  "action": "No insulin"
+}
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 170,
+  "GRBS2": 160,
+  "GRBS3": 155,
+  "GRBS4": 150,
+  "GRBS5": 145,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": true,
+  "Dual inotropes": true,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: True
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - GRBS values: [170, 160, 155, 150, 145]
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 170
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Basal Bolus: MAINTAINING level 2
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 2: GRBS=170, Dose=2 IU, Action=Low dose
+2025-10-25 01:14:20,377 - app.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 2,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 4,
+  "algorithm_used": "Basal Bolus",
+  "level": 2,
+  "action": "Low dose"
+}
+2025-10-25 01:14:22,608 - __main__ - WARNING - OAuth credentials not configured. Authentication will be disabled.
+2025-10-25 01:14:22,610 - __main__ - INFO - Starting Automated Insulin Dose Recommendation System
+2025-10-25 01:14:22,734 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.3:5000
+2025-10-25 01:14:22,734 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-25 01:14:22,735 - werkzeug - INFO -  * Restarting with stat
+2025-10-25 01:14:22,913 - __main__ - WARNING - OAuth credentials not configured. Authentication will be disabled.
+2025-10-25 01:14:22,915 - __main__ - INFO - Starting Automated Insulin Dose Recommendation System
+2025-10-25 01:14:22,917 - werkzeug - WARNING -  * Debugger is active!
+2025-10-25 01:14:24,009 - werkzeug - INFO -  * Debugger PIN: 951-894-422
+2025-10-25 01:14:27,216 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:27,216 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:27] "GET / HTTP/1.1" 200 -
+2025-10-25 01:14:30,607 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:30,607 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 200,
+  "GRBS2": 180,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 200,
+  "GRBS2": 180,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [200, 180, 160, 150, 140]
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 200
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: MAINTAINING level 3
+2025-10-25 01:14:30,607 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 3: GRBS=200, Dose=4 IU, Action=Medium dose
+2025-10-25 01:14:30,608 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 4,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 3,
+  "action": "Medium dose"
+}
+2025-10-25 01:14:30,608 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:30] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,017 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,017 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "GET / HTTP/1.1" 200 -
+2025-10-25 01:14:33,020 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,021 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 400,
+  "GRBS2": 380,
+  "GRBS3": 360,
+  "GRBS4": 340,
+  "GRBS5": 320,
+  "Insulin1": 0,
+  "Insulin2": 0,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 400,
+  "GRBS2": 380,
+  "GRBS3": 360,
+  "GRBS4": 340,
+  "GRBS5": 320,
+  "Insulin1": 0,
+  "Insulin2": 0,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: False
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [400, 380, 360, 340, 320]
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 400
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 7 to 8
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 8: GRBS=400, Rate=7.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:33,021 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 7.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 8,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:33,022 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,025 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,025 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 380,
+  "GRBS2": 400,
+  "GRBS3": 350,
+  "GRBS4": 320,
+  "GRBS5": 300,
+  "Insulin1": 2,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "sc",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,025 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,025 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 380,
+  "GRBS2": 400,
+  "GRBS3": 350,
+  "GRBS4": 320,
+  "GRBS5": 300,
+  "Insulin1": 2,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "sc",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,025 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: False
+2025-10-25 01:14:33,025 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [380, 400, 350, 320, 300]
+2025-10-25 01:14:33,026 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: SC route with dual_inotropes=False or high GRBS
+2025-10-25 01:14:33,026 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,026 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 380
+2025-10-25 01:14:33,026 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 7 to 8
+2025-10-25 01:14:33,026 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 8: GRBS=380, Rate=7.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:33,026 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 7.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 8,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:33,026 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,029 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,029 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 200,
+  "GRBS2": 180,
+  "GRBS3": 160,
+  "GRBS4": 140,
+  "GRBS5": 120,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,029 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,029 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 200,
+  "GRBS2": 180,
+  "GRBS3": 160,
+  "GRBS4": 140,
+  "GRBS5": 120,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,029 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: False
+2025-10-25 01:14:33,029 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [200, 180, 160, 140, 120]
+2025-10-25 01:14:33,030 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: SC route with dual_inotropes=False or high GRBS
+2025-10-25 01:14:33,030 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,030 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 200
+2025-10-25 01:14:33,030 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 3 to 4
+2025-10-25 01:14:33,030 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 4: GRBS=200, Rate=3.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:33,030 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 3.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 4,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:33,030 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,032 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,032 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 250,
+  "GRBS2": 230,
+  "GRBS3": 210,
+  "GRBS4": 190,
+  "GRBS5": 170,
+  "Insulin1": 3,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 2,
+  "Insulin5": 1,
+  "CKD": true,
+  "Dual inotropes": true,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,032 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,032 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 250,
+  "GRBS2": 230,
+  "GRBS3": 210,
+  "GRBS4": 190,
+  "GRBS5": 170,
+  "Insulin1": 3,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 2,
+  "Insulin5": 1,
+  "CKD": true,
+  "Dual inotropes": true,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: True
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [250, 230, 210, 190, 170]
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 250
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 4 to 5
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 5: GRBS=250, Rate=4.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:33,033 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 4.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 5,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:33,033 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,036 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,036 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,036 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,036 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [180, 170, 160, 150, 140]
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 180
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: MAINTAINING level 2
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 2: GRBS=180, Dose=2 IU, Action=Low dose
+2025-10-25 01:14:33,037 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 2,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 2,
+  "action": "Low dose"
+}
+2025-10-25 01:14:33,037 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,040 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,040 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 170,
+  "GRBS2": 160,
+  "GRBS3": 155,
+  "GRBS4": 150,
+  "GRBS5": 145,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": true,
+  "Dual inotropes": true,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 170,
+  "GRBS2": 160,
+  "GRBS3": 155,
+  "GRBS4": 150,
+  "GRBS5": 145,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": true,
+  "Dual inotropes": true,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: True
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [170, 160, 155, 150, 145]
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 170
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: MAINTAINING level 2
+2025-10-25 01:14:33,040 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 2: GRBS=170, Dose=2 IU, Action=Low dose
+2025-10-25 01:14:33,041 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 2,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 4,
+  "algorithm_used": "Basal Bolus",
+  "level": 2,
+  "action": "Low dose"
+}
+2025-10-25 01:14:33,041 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,043 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,043 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 300,
+  "GRBS2": 280,
+  "GRBS3": 260,
+  "GRBS4": 240,
+  "GRBS5": 220,
+  "Insulin1": 6,
+  "Insulin2": 5,
+  "Insulin3": 4,
+  "Insulin4": 3,
+  "Insulin5": 2,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,043 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,043 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 300,
+  "GRBS2": 280,
+  "GRBS3": 260,
+  "GRBS4": 240,
+  "GRBS5": 220,
+  "Insulin1": 6,
+  "Insulin2": 5,
+  "Insulin3": 4,
+  "Insulin4": 3,
+  "Insulin5": 2,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,043 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:33,043 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [300, 280, 260, 240, 220]
+2025-10-25 01:14:33,044 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,044 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,044 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 300
+2025-10-25 01:14:33,044 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: Moving UP from level 5 to 6 (2+ readings > 180)
+2025-10-25 01:14:33,044 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 6: GRBS=300, Dose=10 IU, Action=Maximum dose
+2025-10-25 01:14:33,044 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 10,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 4,
+  "algorithm_used": "Basal Bolus",
+  "level": 6,
+  "action": "Maximum dose"
+}
+2025-10-25 01:14:33,044 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,047 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,047 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 120,
+  "GRBS2": 130,
+  "GRBS3": 125,
+  "GRBS4": 135,
+  "GRBS5": 140,
+  "Insulin1": 0,
+  "Insulin2": 0,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,047 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,047 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 120,
+  "GRBS2": 130,
+  "GRBS3": 125,
+  "GRBS4": 135,
+  "GRBS5": 140,
+  "Insulin1": 0,
+  "Insulin2": 0,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,047 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:33,047 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [120, 130, 125, 135, 140]
+2025-10-25 01:14:33,047 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,047 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,048 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 120
+2025-10-25 01:14:33,048 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: Moving DOWN from level 1 to 1 (reading < 140)
+2025-10-25 01:14:33,048 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 1: GRBS=120, Dose=0 IU, Action=No insulin
+2025-10-25 01:14:33,048 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 0,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 1,
+  "action": "No insulin"
+}
+2025-10-25 01:14:33,048 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,051 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,051 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": "invalid",
+  "GRBS2": 200,
+  "GRBS3": 180,
+  "GRBS4": 160,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,051 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,051 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": "invalid",
+  "GRBS2": 200,
+  "GRBS3": 180,
+  "GRBS4": 160,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,051 - __main__.InsulinRecommendationEngine - ERROR - Input validation failed: Invalid GRBS value for GRBS1: invalid
+2025-10-25 01:14:33,051 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "[31m[1mPOST /recommend HTTP/1.1[0m" 400 -
+2025-10-25 01:14:33,055 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,055 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc"
+}
+2025-10-25 01:14:33,056 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,056 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc"
+}
+2025-10-25 01:14:33,056 - __main__.InsulinRecommendationEngine - ERROR - Input validation failed: Missing required field: diet_order
+2025-10-25 01:14:33,056 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "[31m[1mPOST /recommend HTTP/1.1[0m" 400 -
+2025-10-25 01:14:33,059 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,059 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "invalid",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,059 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,059 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "invalid",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,059 - __main__.InsulinRecommendationEngine - ERROR - Input validation failed: Route must be 'iv' or 'sc'
+2025-10-25 01:14:33,059 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "[31m[1mPOST /recommend HTTP/1.1[0m" 400 -
+2025-10-25 01:14:33,062 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,062 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 1000,
+  "GRBS2": 950,
+  "GRBS3": 900,
+  "GRBS4": 850,
+  "GRBS5": 800,
+  "Insulin1": 8,
+  "Insulin2": 7,
+  "Insulin3": 6,
+  "Insulin4": 5,
+  "Insulin5": 4,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,062 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,062 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 1000,
+  "GRBS2": 950,
+  "GRBS3": 900,
+  "GRBS4": 850,
+  "GRBS5": 800,
+  "Insulin1": 8,
+  "Insulin2": 7,
+  "Insulin3": 6,
+  "Insulin4": 5,
+  "Insulin5": 4,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,062 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: False
+2025-10-25 01:14:33,062 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [1000, 950, 900, 850, 800]
+2025-10-25 01:14:33,062 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:33,063 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,063 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 1000
+2025-10-25 01:14:33,063 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 10 to 10
+2025-10-25 01:14:33,063 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 10: GRBS=1000, Rate=10.0 IU/hr, Action=Maximum rate
+2025-10-25 01:14:33,063 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 10.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 10,
+  "action": "Maximum rate"
+}
+2025-10-25 01:14:33,064 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,066 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,066 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 300,
+  "GRBS2": 280,
+  "GRBS3": 260,
+  "GRBS4": 240,
+  "GRBS5": 220,
+  "Insulin1": 4,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,066 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 300,
+  "GRBS2": 280,
+  "GRBS3": 260,
+  "GRBS4": 240,
+  "GRBS5": 220,
+  "Insulin1": 4,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: False
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [300, 280, 260, 240, 220]
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 300
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 5 to 6
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 6: GRBS=300, Rate=5.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:33,067 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 5.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 6,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:33,067 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,071 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,071 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 100,
+  "GRBS2": 120,
+  "GRBS3": 140,
+  "GRBS4": 160,
+  "GRBS5": 180,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 100,
+  "GRBS2": 120,
+  "GRBS3": 140,
+  "GRBS4": 160,
+  "GRBS5": 180,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: False
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [100, 120, 140, 160, 180]
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 100
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving DOWN from level 1 to 1
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 1: GRBS=100, Rate=0 IU/hr, Action=Turn off insulin
+2025-10-25 01:14:33,071 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 1,
+  "action": "Turn off insulin"
+}
+2025-10-25 01:14:33,072 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,074 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,075 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 200,
+  "GRBS2": 190,
+  "GRBS3": 180,
+  "GRBS4": 170,
+  "GRBS5": 160,
+  "Insulin1": 4,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 200,
+  "GRBS2": 190,
+  "GRBS3": 180,
+  "GRBS4": 170,
+  "GRBS5": 160,
+  "Insulin1": 4,
+  "Insulin2": 3,
+  "Insulin3": 2,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [200, 190, 180, 170, 160]
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 200
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: Moving UP from level 3 to 4 (2+ readings > 180)
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 4: GRBS=200, Dose=6 IU, Action=High dose
+2025-10-25 01:14:33,075 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 6,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 4,
+  "action": "High dose"
+}
+2025-10-25 01:14:33,075 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,078 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,079 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 130,
+  "GRBS2": 150,
+  "GRBS3": 160,
+  "GRBS4": 170,
+  "GRBS5": 180,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 130,
+  "GRBS2": 150,
+  "GRBS3": 160,
+  "GRBS4": 170,
+  "GRBS5": 180,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [130, 150, 160, 170, 180]
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 130
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: Moving DOWN from level 1 to 1 (reading < 140)
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 1: GRBS=130, Dose=0 IU, Action=No insulin
+2025-10-25 01:14:33,079 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 0,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 1,
+  "action": "No insulin"
+}
+2025-10-25 01:14:33,080 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,082 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,082 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 250,
+  "GRBS2": 230,
+  "GRBS3": 210,
+  "GRBS4": 190,
+  "GRBS5": 170,
+  "Insulin1": 3,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 250,
+  "GRBS2": 230,
+  "GRBS3": 210,
+  "GRBS4": 190,
+  "GRBS5": 170,
+  "Insulin1": 3,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: False
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [250, 230, 210, 190, 170]
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 250
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 4 to 5
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 5: GRBS=250, Rate=4.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:33,082 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 4.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 1,
+  "algorithm_used": "IV Infusion",
+  "level": 5,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:33,083 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,086 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,086 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 170,
+  "GRBS2": 160,
+  "GRBS3": 150,
+  "GRBS4": 140,
+  "GRBS5": 130,
+  "Insulin1": 2,
+  "Insulin2": 1,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,086 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 170,
+  "GRBS2": 160,
+  "GRBS3": 150,
+  "GRBS4": 140,
+  "GRBS5": 130,
+  "Insulin1": 2,
+  "Insulin2": 1,
+  "Insulin3": 0,
+  "Insulin4": 0,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": false,
+  "route": "iv",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: iv, dual_inotropes: False
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [170, 160, 150, 140, 130]
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - Using IV algorithm: IV route with GRBS1-4 not in 150-180 range
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: iv
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - Calculating IV insulin dose for current GRBS: 170
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm: Moving UP from level 3 to 4
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - IV Algorithm - Level 4: GRBS=170, Rate=3.0 IU/hr, Action=Increase rate
+2025-10-25 01:14:33,087 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 3.0,
+  "Suggested_route": "iv",
+  "next_grbs_after": 2,
+  "algorithm_used": "IV Infusion",
+  "level": 4,
+  "action": "Increase rate"
+}
+2025-10-25 01:14:33,087 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,090 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,090 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "NPO"
+}
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [180, 170, 160, 150, 140]
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 180
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: MAINTAINING level 2
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 2: GRBS=180, Dose=2 IU, Action=Low dose
+2025-10-25 01:14:33,090 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 2,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 4,
+  "algorithm_used": "Basal Bolus",
+  "level": 2,
+  "action": "Low dose"
+}
+2025-10-25 01:14:33,091 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -
+2025-10-25 01:14:33,093 - __main__ - INFO - OAuth not configured, allowing access for demo
+2025-10-25 01:14:33,093 - __main__ - INFO - Received recommendation request: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,093 - __main__.InsulinRecommendationEngine - INFO - Starting insulin dose recommendation process
+2025-10-25 01:14:33,093 - __main__.InsulinRecommendationEngine - INFO - Input data: {
+  "GRBS1": 180,
+  "GRBS2": 170,
+  "GRBS3": 160,
+  "GRBS4": 150,
+  "GRBS5": 140,
+  "Insulin1": 2,
+  "Insulin2": 2,
+  "Insulin3": 1,
+  "Insulin4": 1,
+  "Insulin5": 0,
+  "CKD": false,
+  "Dual inotropes": true,
+  "route": "sc",
+  "diet_order": "others"
+}
+2025-10-25 01:14:33,093 - __main__.InsulinRecommendationEngine - INFO - Determining algorithm type for route: sc, dual_inotropes: True
+2025-10-25 01:14:33,093 - __main__.InsulinRecommendationEngine - INFO - GRBS values: [180, 170, 160, 150, 140]
+2025-10-25 01:14:33,093 - __main__.InsulinRecommendationEngine - INFO - Using Basal Bolus algorithm
+2025-10-25 01:14:33,094 - __main__.InsulinRecommendationEngine - INFO - Selected algorithm: basal_bolus
+2025-10-25 01:14:33,094 - __main__.InsulinRecommendationEngine - INFO - Calculating Basal Bolus dose for current GRBS: 180
+2025-10-25 01:14:33,094 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus: MAINTAINING level 2
+2025-10-25 01:14:33,094 - __main__.InsulinRecommendationEngine - INFO - Basal Bolus Algorithm - Level 2: GRBS=180, Dose=2 IU, Action=Low dose
+2025-10-25 01:14:33,094 - __main__.InsulinRecommendationEngine - INFO - Recommendation result: {
+  "Suggested_insulin_dose": 2,
+  "Suggested_route": "subcutaneous",
+  "next_grbs_after": 6,
+  "algorithm_used": "Basal Bolus",
+  "level": 2,
+  "action": "Low dose"
+}
+2025-10-25 01:14:33,094 - werkzeug - INFO - 127.0.0.1 - - [25/Oct/2025 01:14:33] "POST /recommend HTTP/1.1" 200 -

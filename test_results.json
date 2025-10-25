@@ -1,0 +1,206 @@
+[
+  {
+    "scenario": "High GRBS - IV Route",
+    "result": {
+      "Suggested_insulin_dose": 7.0,
+      "Suggested_route": "iv",
+      "action": "Increase rate",
+      "algorithm_used": "IV Infusion",
+      "level": 8,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "SC Route with High GRBS - Should Switch to IV",
+    "result": {
+      "Suggested_insulin_dose": 7.0,
+      "Suggested_route": "iv",
+      "action": "Increase rate",
+      "algorithm_used": "IV Infusion",
+      "level": 8,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "SC Route with Dual Inotropes False - Should Switch to IV",
+    "result": {
+      "Suggested_insulin_dose": 3.0,
+      "Suggested_route": "iv",
+      "action": "Increase rate",
+      "algorithm_used": "IV Infusion",
+      "level": 4,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "IV Route with GRBS not in 150-180 range",
+    "result": {
+      "Suggested_insulin_dose": 4.0,
+      "Suggested_route": "iv",
+      "action": "Increase rate",
+      "algorithm_used": "IV Infusion",
+      "level": 5,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "Normal SC Route - Basal Bolus",
+    "result": {
+      "Suggested_insulin_dose": 2,
+      "Suggested_route": "subcutaneous",
+      "action": "Low dose",
+      "algorithm_used": "Basal Bolus",
+      "level": 2,
+      "next_grbs_after": 6
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "IV Route with GRBS in 150-180 range - Should Use Basal Bolus",
+    "result": {
+      "Suggested_insulin_dose": 2,
+      "Suggested_route": "subcutaneous",
+      "action": "Low dose",
+      "algorithm_used": "Basal Bolus",
+      "level": 2,
+      "next_grbs_after": 4
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "High GRBS - Basal Bolus High Dose",
+    "result": {
+      "Suggested_insulin_dose": 10,
+      "Suggested_route": "subcutaneous",
+      "action": "Maximum dose",
+      "algorithm_used": "Basal Bolus",
+      "level": 6,
+      "next_grbs_after": 4
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "Low GRBS - No Insulin Required",
+    "result": {
+      "Suggested_insulin_dose": 0,
+      "Suggested_route": "subcutaneous",
+      "action": "No insulin",
+      "algorithm_used": "Basal Bolus",
+      "level": 1,
+      "next_grbs_after": 6
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "Extreme High GRBS Values",
+    "result": {
+      "Suggested_insulin_dose": 10.0,
+      "Suggested_route": "iv",
+      "action": "Maximum rate",
+      "algorithm_used": "IV Infusion",
+      "level": 10,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "IV Algorithm - Moving Up Levels",
+    "result": {
+      "Suggested_insulin_dose": 5.0,
+      "Suggested_route": "iv",
+      "action": "Increase rate",
+      "algorithm_used": "IV Infusion",
+      "level": 6,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "IV Algorithm - Moving Down Levels",
+    "result": {
+      "Suggested_insulin_dose": 0,
+      "Suggested_route": "iv",
+      "action": "Turn off insulin",
+      "algorithm_used": "IV Infusion",
+      "level": 1,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "Basal Bolus - Moving Up Levels",
+    "result": {
+      "Suggested_insulin_dose": 6,
+      "Suggested_route": "subcutaneous",
+      "action": "High dose",
+      "algorithm_used": "Basal Bolus",
+      "level": 4,
+      "next_grbs_after": 6
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "Basal Bolus - Moving Down Levels",
+    "result": {
+      "Suggested_insulin_dose": 0,
+      "Suggested_route": "subcutaneous",
+      "action": "No insulin",
+      "algorithm_used": "Basal Bolus",
+      "level": 1,
+      "next_grbs_after": 6
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "IV Route - Hourly Check",
+    "result": {
+      "Suggested_insulin_dose": 4.0,
+      "Suggested_route": "iv",
+      "action": "Increase rate",
+      "algorithm_used": "IV Infusion",
+      "level": 5,
+      "next_grbs_after": 1
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "IV Route - 2nd Hourly Check",
+    "result": {
+      "Suggested_insulin_dose": 3.0,
+      "Suggested_route": "iv",
+      "action": "Increase rate",
+      "algorithm_used": "IV Infusion",
+      "level": 4,
+      "next_grbs_after": 2
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "SC Route - NPO (4th Hourly)",
+    "result": {
+      "Suggested_insulin_dose": 2,
+      "Suggested_route": "subcutaneous",
+      "action": "Low dose",
+      "algorithm_used": "Basal Bolus",
+      "level": 2,
+      "next_grbs_after": 4
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  },
+  {
+    "scenario": "SC Route - Others (6th Hourly)",
+    "result": {
+      "Suggested_insulin_dose": 2,
+      "Suggested_route": "subcutaneous",
+      "action": "Low dose",
+      "algorithm_used": "Basal Bolus",
+      "level": 2,
+      "next_grbs_after": 6
+    },
+    "timestamp": "2025-10-25 01:14:33"
+  }
+]
