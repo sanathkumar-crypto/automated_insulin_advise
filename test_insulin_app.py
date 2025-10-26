@@ -106,37 +106,37 @@ class InsulinTestSuite:
         # Test Case 1: High GRBS requiring IV
         test_data = {
             "GRBS1": 400, "GRBS2": 380, "GRBS3": 360, "GRBS4": 340, "GRBS5": 320,
-            "Insulin1": 0, "Insulin2": 0, "Insulin3": 0, "Insulin4": 0, "Insulin5": 0,
+            "Insulin1": 0, "Insulin2": 0, "Insulin3": 0, "Insulin4": 0,
             "CKD": False, "Dual inotropes": False, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("High GRBS - IV Route", test_data, "iv")
         result = self.make_recommendation_request(test_data)
         self.analyze_recommendation(result, "High GRBS - IV Route")
         
-        # Test Case 2: SC route with high GRBS (should switch to IV)
+        # Test Case 2: SC route with 2+ high GRBS (should switch to IV)
         test_data = {
-            "GRBS1": 380, "GRBS2": 400, "GRBS3": 350, "GRBS4": 320, "GRBS5": 300,
-            "Insulin1": 2, "Insulin2": 3, "Insulin3": 2, "Insulin4": 1, "Insulin5": 0,
-            "CKD": False, "Dual inotropes": False, "route": "sc", "diet_order": "NPO"
+            "GRBS1": 400, "GRBS2": 420, "GRBS3": 350, "GRBS4": 320, "GRBS5": 300,
+            "Insulin1": 2, "Insulin2": 3, "Insulin3": 2, "Insulin4": 1,
+            "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "NPO"
         }
-        self.log_test_scenario("SC Route with High GRBS - Should Switch to IV", test_data, "iv")
+        self.log_test_scenario("SC Route with 2+ High GRBS - Should Switch to IV", test_data, "iv")
         result = self.make_recommendation_request(test_data)
-        self.analyze_recommendation(result, "SC Route with High GRBS - Should Switch to IV")
+        self.analyze_recommendation(result, "SC Route with 2+ High GRBS - Should Switch to IV")
         
-        # Test Case 3: SC route with dual inotropes False (should switch to IV)
+        # Test Case 3: SC route WITHOUT 2+ high GRBS (should stay SC)
         test_data = {
             "GRBS1": 200, "GRBS2": 180, "GRBS3": 160, "GRBS4": 140, "GRBS5": 120,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": False, "route": "sc", "diet_order": "others"
         }
-        self.log_test_scenario("SC Route with Dual Inotropes False - Should Switch to IV", test_data, "iv")
+        self.log_test_scenario("SC Route WITHOUT 2+ High GRBS - Should Stay SC", test_data, "subcutaneous")
         result = self.make_recommendation_request(test_data)
-        self.analyze_recommendation(result, "SC Route with Dual Inotropes False - Should Switch to IV")
+        self.analyze_recommendation(result, "SC Route WITHOUT 2+ High GRBS - Should Stay SC")
         
         # Test Case 4: IV route with GRBS not in 150-180 range
         test_data = {
             "GRBS1": 250, "GRBS2": 230, "GRBS3": 210, "GRBS4": 190, "GRBS5": 170,
-            "Insulin1": 3, "Insulin2": 3, "Insulin3": 2, "Insulin4": 2, "Insulin5": 1,
+            "Insulin1": 3, "Insulin2": 3, "Insulin3": 2, "Insulin4": 2,
             "CKD": True, "Dual inotropes": True, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("IV Route with GRBS not in 150-180 range", test_data, "iv")
@@ -152,7 +152,7 @@ class InsulinTestSuite:
         # Test Case 1: Normal SC route scenario
         test_data = {
             "GRBS1": 180, "GRBS2": 170, "GRBS3": 160, "GRBS4": 150, "GRBS5": 140,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "others"
         }
         self.log_test_scenario("Normal SC Route - Basal Bolus", test_data, "subcutaneous")
@@ -162,7 +162,7 @@ class InsulinTestSuite:
         # Test Case 2: IV route with GRBS in 150-180 range (should use basal bolus)
         test_data = {
             "GRBS1": 170, "GRBS2": 160, "GRBS3": 155, "GRBS4": 150, "GRBS5": 145,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": True, "Dual inotropes": True, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("IV Route with GRBS in 150-180 range - Should Use Basal Bolus", test_data, "subcutaneous")
@@ -172,7 +172,7 @@ class InsulinTestSuite:
         # Test Case 3: High GRBS requiring higher dose
         test_data = {
             "GRBS1": 300, "GRBS2": 280, "GRBS3": 260, "GRBS4": 240, "GRBS5": 220,
-            "Insulin1": 6, "Insulin2": 5, "Insulin3": 4, "Insulin4": 3, "Insulin5": 2,
+            "Insulin1": 6, "Insulin2": 5, "Insulin3": 4, "Insulin4": 3,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "NPO"
         }
         self.log_test_scenario("High GRBS - Basal Bolus High Dose", test_data, "subcutaneous")
@@ -182,7 +182,7 @@ class InsulinTestSuite:
         # Test Case 4: Low GRBS requiring no insulin
         test_data = {
             "GRBS1": 120, "GRBS2": 130, "GRBS3": 125, "GRBS4": 135, "GRBS5": 140,
-            "Insulin1": 0, "Insulin2": 0, "Insulin3": 0, "Insulin4": 0, "Insulin5": 0,
+            "Insulin1": 0, "Insulin2": 0, "Insulin3": 0, "Insulin4": 0,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "others"
         }
         self.log_test_scenario("Low GRBS - No Insulin Required", test_data, "subcutaneous")
@@ -199,7 +199,7 @@ class InsulinTestSuite:
         test_data = {
             "GRBS1": "invalid",  # Invalid GRBS value
             "GRBS2": 200, "GRBS3": 180, "GRBS4": 160, "GRBS5": 140,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "others"
         }
         self.log_test_scenario("Invalid GRBS Value", test_data)
@@ -209,7 +209,7 @@ class InsulinTestSuite:
         # Test Case 2: Missing required field
         test_data = {
             "GRBS1": 180, "GRBS2": 170, "GRBS3": 160, "GRBS4": 150, "GRBS5": 140,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "sc"
             # Missing "diet_order" field
         }
@@ -220,7 +220,7 @@ class InsulinTestSuite:
         # Test Case 3: Invalid route
         test_data = {
             "GRBS1": 180, "GRBS2": 170, "GRBS3": 160, "GRBS4": 150, "GRBS5": 140,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "invalid", "diet_order": "others"
         }
         self.log_test_scenario("Invalid Route", test_data)
@@ -230,7 +230,7 @@ class InsulinTestSuite:
         # Test Case 4: Extreme GRBS values
         test_data = {
             "GRBS1": 1000, "GRBS2": 950, "GRBS3": 900, "GRBS4": 850, "GRBS5": 800,
-            "Insulin1": 8, "Insulin2": 7, "Insulin3": 6, "Insulin4": 5, "Insulin5": 4,
+            "Insulin1": 8, "Insulin2": 7, "Insulin3": 6, "Insulin4": 5,
             "CKD": False, "Dual inotropes": False, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("Extreme High GRBS Values", test_data, "iv")
@@ -246,7 +246,7 @@ class InsulinTestSuite:
         # Test Case 1: IV Algorithm - Moving up levels
         test_data = {
             "GRBS1": 300, "GRBS2": 280, "GRBS3": 260, "GRBS4": 240, "GRBS5": 220,
-            "Insulin1": 4, "Insulin2": 3, "Insulin3": 2, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 4, "Insulin2": 3, "Insulin3": 2, "Insulin4": 1,
             "CKD": False, "Dual inotropes": False, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("IV Algorithm - Moving Up Levels", test_data, "iv")
@@ -256,7 +256,7 @@ class InsulinTestSuite:
         # Test Case 2: IV Algorithm - Moving down levels
         test_data = {
             "GRBS1": 100, "GRBS2": 120, "GRBS3": 140, "GRBS4": 160, "GRBS5": 180,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": False, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("IV Algorithm - Moving Down Levels", test_data, "iv")
@@ -266,7 +266,7 @@ class InsulinTestSuite:
         # Test Case 3: Basal Bolus - Moving up levels (2+ readings > 180)
         test_data = {
             "GRBS1": 200, "GRBS2": 190, "GRBS3": 180, "GRBS4": 170, "GRBS5": 160,
-            "Insulin1": 4, "Insulin2": 3, "Insulin3": 2, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 4, "Insulin2": 3, "Insulin3": 2, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "others"
         }
         self.log_test_scenario("Basal Bolus - Moving Up Levels", test_data, "subcutaneous")
@@ -276,7 +276,7 @@ class InsulinTestSuite:
         # Test Case 4: Basal Bolus - Moving down levels (reading < 140)
         test_data = {
             "GRBS1": 130, "GRBS2": 150, "GRBS3": 160, "GRBS4": 170, "GRBS5": 180,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "others"
         }
         self.log_test_scenario("Basal Bolus - Moving Down Levels", test_data, "subcutaneous")
@@ -292,7 +292,7 @@ class InsulinTestSuite:
         # Test Case 1: IV route - hourly check
         test_data = {
             "GRBS1": 250, "GRBS2": 230, "GRBS3": 210, "GRBS4": 190, "GRBS5": 170,
-            "Insulin1": 3, "Insulin2": 2, "Insulin3": 1, "Insulin4": 0, "Insulin5": 0,
+            "Insulin1": 3, "Insulin2": 2, "Insulin3": 1, "Insulin4": 0,
             "CKD": False, "Dual inotropes": False, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("IV Route - Hourly Check", test_data, "iv")
@@ -302,7 +302,7 @@ class InsulinTestSuite:
         # Test Case 2: IV route - 2nd hourly check (GRBS1-4 in 140-180)
         test_data = {
             "GRBS1": 170, "GRBS2": 160, "GRBS3": 150, "GRBS4": 140, "GRBS5": 130,
-            "Insulin1": 2, "Insulin2": 1, "Insulin3": 0, "Insulin4": 0, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 1, "Insulin3": 0, "Insulin4": 0,
             "CKD": False, "Dual inotropes": False, "route": "iv", "diet_order": "NPO"
         }
         self.log_test_scenario("IV Route - 2nd Hourly Check", test_data, "iv")
@@ -312,7 +312,7 @@ class InsulinTestSuite:
         # Test Case 3: SC route - NPO (4th hourly)
         test_data = {
             "GRBS1": 180, "GRBS2": 170, "GRBS3": 160, "GRBS4": 150, "GRBS5": 140,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "NPO"
         }
         self.log_test_scenario("SC Route - NPO (4th Hourly)", test_data, "subcutaneous")
@@ -322,7 +322,7 @@ class InsulinTestSuite:
         # Test Case 4: SC route - Others (6th hourly)
         test_data = {
             "GRBS1": 180, "GRBS2": 170, "GRBS3": 160, "GRBS4": 150, "GRBS5": 140,
-            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1, "Insulin5": 0,
+            "Insulin1": 2, "Insulin2": 2, "Insulin3": 1, "Insulin4": 1,
             "CKD": False, "Dual inotropes": True, "route": "sc", "diet_order": "others"
         }
         self.log_test_scenario("SC Route - Others (6th Hourly)", test_data, "subcutaneous")
@@ -413,4 +413,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
