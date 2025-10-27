@@ -19,12 +19,11 @@ import time
 from typing import Dict, List
 import sys
 
-# Configure detailed logging
+# Configure logging - console only
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('test_results.log'),
         logging.StreamHandler()
     ]
 )
@@ -33,7 +32,7 @@ logger = logging.getLogger(__name__)
 class InsulinTestSuite:
     """Comprehensive test suite for insulin recommendation system"""
     
-    def __init__(self, base_url: str = "http://localhost:5000"):
+    def __init__(self, base_url: str = "http://localhost:5001"):
         self.base_url = base_url
         self.test_results = []
         self.logger = logging.getLogger(f"{__name__}.InsulinTestSuite")
@@ -65,7 +64,7 @@ class InsulinTestSuite:
                 return {"error": f"API Error {response.status_code}: {response.text}"}
         
         except requests.exceptions.ConnectionError:
-            self.logger.error("Connection Error: Make sure the Flask app is running on localhost:5000")
+            self.logger.error("Connection Error: Make sure the Flask app is running on localhost:5001")
             return {"error": "Connection Error: Flask app not running"}
         except Exception as e:
             self.logger.error(f"Request Error: {str(e)}")
@@ -344,13 +343,6 @@ class InsulinTestSuite:
         self.logger.info(f"Failed Tests: {failed_tests}")
         self.logger.info(f"Success Rate: {(successful_tests/total_tests)*100:.1f}%")
         
-        # Save detailed results to JSON file
-        with open('test_results.json', 'w') as f:
-            json.dump(self.test_results, f, indent=2)
-        
-        self.logger.info(f"\nDetailed test results saved to: test_results.json")
-        self.logger.info(f"Test logs saved to: test_results.log")
-        
         # Log algorithm usage statistics
         algorithm_usage = {}
         for result in self.test_results:
@@ -390,12 +382,12 @@ def main():
     print("Automated Insulin Dose Recommendation System - Test Suite")
     print("=" * 60)
     print("This test suite will test various scenarios for insulin dose recommendations.")
-    print("Make sure the Flask application is running on localhost:5000")
+    print("Make sure the Flask application is running on localhost:5001")
     print("=" * 60)
     
     # Check if Flask app is running
     try:
-        response = requests.get("http://localhost:5000", timeout=5)
+        response = requests.get("http://localhost:5001", timeout=5)
         print("✓ Flask application is running")
     except requests.exceptions.ConnectionError:
         print("✗ Flask application is not running!")
@@ -408,8 +400,6 @@ def main():
     test_suite.run_all_tests()
     
     print("\nTest execution completed!")
-    print("Check 'test_results.log' for detailed logs")
-    print("Check 'test_results.json' for structured results")
 
 if __name__ == "__main__":
     main()

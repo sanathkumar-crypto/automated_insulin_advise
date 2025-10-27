@@ -6,10 +6,10 @@ A comprehensive Python application that provides intelligent insulin dose recomm
 
 - **Dual Algorithm Support**: IV Insulin Infusion and Basal Bolus algorithms
 - **Smart Route Selection**: Automatically determines optimal insulin delivery route
-- **Gmail OAuth Authentication**: Secure access restricted to @cloudphysician.net domain
-- **Comprehensive Logging**: Detailed decision-making process documentation
 - **RESTful API**: Easy integration with existing healthcare systems
 - **Extensive Testing**: Comprehensive test suite with multiple scenarios
+- **Console Logging**: Real-time logging to console for monitoring
+- **Modular Architecture**: Clean, maintainable code structure (see `STRUCTURE.md`)
 
 ## Installation
 
@@ -29,31 +29,59 @@ A comprehensive Python application that provides intelligent insulin dose recomm
    - Set up environment variables
    - Create necessary directories
 
-3. **Configure Google OAuth**:
-   - Update the `.env` file with your Google OAuth credentials
-   - Get credentials from [Google Cloud Console](https://console.cloud.google.com/)
-
-4. **Run the application**:
+3. **Run the application**:
    ```bash
    # Option 1: Use the convenience script
    ./run_app.sh
    
    # Option 2: Manual activation
-   source venv/bin/activate
+   source .venv/bin/activate
    python app.py
    ```
 
-The application will be available at `http://localhost:5000`
+The application will be available at `http://localhost:5001`
+
+## Deployment to GCP
+
+The service can be deployed to Google Cloud Run as a microservice.
+
+### Quick Deploy
+
+```bash
+# Setup (first time only)
+cp .env.example .env
+
+# Deploy to production
+./deployment/deploy-prod.sh
+```
+
+For detailed deployment instructions, see [`deployment/README.md`](deployment/README.md).
 
 ## API Usage
 
-### Authentication
-
-The application uses Gmail OAuth for authentication. Only users with @cloudphysician.net email addresses are authorized to access the system.
-
 ### Input Format
 
-Send a POST request to `/recommend` with the following JSON structure:
+Send a POST request to `/recommend` with JSON data. The system supports two input formats:
+
+#### Format 1: Array Format (Recommended)
+
+```json
+{
+    "GRBS": [180, 200, 190, 185, 175],
+    "Insulin": [2, 3, 2.5, 2, 1.5],
+    "CKD": false,
+    "Dual inotropes": false,
+    "route": "sc",
+    "diet_order": "NPO"
+}
+```
+
+**Notes:**
+- `GRBS`: Array of up to 5 GRBS values (most recent first). At least one value required.
+- `Insulin`: Array of up to 4 previous insulin doses (most recent first). Optional, defaults to 0s.
+- Arrays will be padded with zeros if fewer values are provided
+
+#### Format 2: Individual Fields (Backward Compatibility)
 
 ```json
 {
@@ -66,13 +94,20 @@ Send a POST request to `/recommend` with the following JSON structure:
     "Insulin2": 3,
     "Insulin3": 2.5,
     "Insulin4": 2,
-    "Insulin5": 1.5,
     "CKD": false,
     "Dual inotropes": false,
     "route": "sc",
     "diet_order": "NPO"
 }
 ```
+
+**Field Descriptions:**
+- `GRBS1-5`: Blood glucose readings (mg/dL), most recent first. Only GRBS1 required.
+- `Insulin1-4`: Previous insulin doses (IU or IU/hr), most recent first. Optional.
+- `CKD`: Chronic Kidney Disease flag (boolean). Default: false
+- `Dual inotropes`: Dual inotropes flag (boolean). Default: false
+- `route`: Insulin delivery route - "iv" or "sc". Default: "sc"
+- `diet_order`: Diet order - "NPO" or "others". Default: "others"
 
 ### Output Format
 
@@ -150,14 +185,11 @@ The test suite includes:
 
 ### Test Output
 
-The test suite generates:
-- **Console Output**: Real-time test execution logs
-- **test_results.log**: Detailed logging of all test scenarios
-- **test_results.json**: Structured test results for analysis
+The test suite displays real-time test execution logs in the console.
 
 ## Logging
 
-The application provides comprehensive logging:
+The application provides comprehensive console logging:
 
 - **Decision Process**: Which algorithm is selected and why
 - **Level Transitions**: When and why levels change
@@ -165,52 +197,95 @@ The application provides comprehensive logging:
 - **API Requests**: All incoming requests and responses
 - **Error Handling**: Detailed error messages and stack traces
 
-Log files:
-- `insulin_recommendations.log`: Main application logs
-- `test_results.log`: Test execution logs
+All logs are displayed in real-time on the console.
+
+## Code Structure
+
+The application has been refactored from a single 686-line file into a clean, modular architecture:
+
+```
+automated_insulin_advise/
+├── app.py                          # Flask API server (~100 lines)
+│   └── Routes, request/response handling, logging
+│
+├── engine/                         # Core recommendation engine package
+│   ├── __init__.py                # Package initialization
+│   ├── config_loader.py           # CSV loading & default configs (~100 lines)
+│   ├── validators.py              # Input validation & normalization (~125 lines)
+│   ├── algorithms.py              # Algorithm logic & transitions (~175 lines)
+│   └── recommendation_engine.py   # Main orchestration (~250 lines)
+│
+├── algorithm_config.csv            # Algorithm configuration data
+└── test_insulin_app.py            # Comprehensive test suite
+```
+
+### Module Responsibilities
+
+| Module | Purpose | Key Components |
+|--------|---------|----------------|
+| `app.py` | Flask API server | Routes, HTTP handling, logging helpers |
+| `config_loader.py` | Configuration | Load CSV, parse ranges, defaults |
+| `validators.py` | Input validation | Array conversion, sanitization, defaults |
+| `algorithms.py` | Algorithm logic | AlgorithmSelector, TransitionRules, DoseFinder, TimingCalculator |
+| `recommendation_engine.py` | Orchestration | Main engine, IV/Basal calculations, level matching |
+
+### Data Flow
+
+```
+HTTP Request → app.py
+    ↓
+Input Validation → validators.py
+    ↓
+Algorithm Selection → algorithms.py
+    ↓
+Dose Calculation → recommendation_engine.py
+    ├→ Level Determination
+    ├→ Transition Rules (algorithms.py)
+    ├→ Dose Finding (algorithms.py)
+    └→ Timing Calculation (algorithms.py)
+    ↓
+Result → app.py → HTTP Response
+```
+
+### Making Changes
+
+| Task | File to Edit |
+|------|--------------|
+| Add/modify API endpoints | `app.py` |
+| Change validation rules | `engine/validators.py` |
+| Modify algorithm logic | `engine/algorithms.py` |
+| Update dose calculations | `engine/recommendation_engine.py` |
+| Change algorithm config | `engine/config_loader.py` or `algorithm_config.csv` |
+
+### Benefits
+
+- ✅ **Readable**: Small, focused files (100-250 lines each)
+- ✅ **Maintainable**: Clear separation of concerns
+- ✅ **Testable**: Independent, testable modules
+- ✅ **Extensible**: Add features without affecting other modules
+- ✅ **No circular dependencies**: Clean module imports
 
 ## Configuration
 
-### Environment Variables
-
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GOOGLE_CLIENT_ID` | Google OAuth Client ID | Yes |
-| `GOOGLE_CLIENT_SECRET` | Google OAuth Client Secret | Yes |
-| `SECRET_KEY` | Flask secret key | Yes |
-
-### Google OAuth Setup
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing
-3. Enable Google+ API
-4. Create OAuth 2.0 credentials
-5. Add authorized redirect URIs: `http://localhost:5000/login/authorized`
-6. Copy Client ID and Secret to environment variables
+No additional configuration is required. The application runs out-of-the-box.
 
 ## API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/` | GET | Main page with API documentation |
-| `/login` | GET | Initiate Gmail OAuth login |
-| `/login/authorized` | GET | OAuth callback handler |
+| `/` | GET | Health check and API information |
 | `/recommend` | POST | Get insulin dose recommendation |
-| `/logout` | GET | Logout user |
 
 ## Error Handling
 
 The application handles various error conditions:
 
 - **Input Validation**: Invalid data types, missing fields, out-of-range values
-- **Authentication**: Unauthorized email domains, OAuth failures
 - **Algorithm Errors**: Invalid algorithm states, calculation errors
 - **API Errors**: Malformed requests, server errors
 
 ## Security Features
 
-- **Domain Restriction**: Only @cloudphysician.net emails allowed
-- **OAuth Authentication**: Secure Google OAuth 2.0 flow
 - **Input Validation**: Comprehensive input sanitization
 - **Error Handling**: Secure error messages without sensitive data exposure
 
@@ -233,10 +308,21 @@ For support and questions, please contact the development team or create an issu
 
 ## Changelog
 
+### Version 1.2.0
+- **Refactored to modular architecture** - Code split into focused modules (686 lines → 5 modules)
+- **Removed HTML web interface** (API-only now)
+- **Removed Google OAuth authentication** (open access)
+- **Simplified logging** to console only (no file logging)
+- **Removed test result file generation** (console only)
+- **Streamlined dependencies** (Flask + requests only)
+
+### Version 1.1.0
+- Added array format for GRBS and Insulin values (recommended format)
+- Maintained backward compatibility with individual field format
+- Enhanced input validation for array-based inputs
+
 ### Version 1.0.0
 - Initial release
 - IV Insulin Infusion algorithm
 - Basal Bolus algorithm
-- Gmail OAuth authentication
 - Comprehensive test suite
-- Detailed logging system
