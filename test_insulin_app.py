@@ -28,11 +28,14 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+LOCAL_HOST = "http://localhost:5001"
+PROD_HOST = "https://insulin-recommendation-971880579407.asia-south1.run.app"
+ENDPOINT = PROD_HOST
 
 class InsulinTestSuite:
     """Comprehensive test suite for insulin recommendation system"""
     
-    def __init__(self, base_url: str = "http://localhost:5001"):
+    def __init__(self, base_url: str = ENDPOINT):
         self.base_url = base_url
         self.test_results = []
         self.logger = logging.getLogger(f"{__name__}.InsulinTestSuite")
@@ -64,7 +67,7 @@ class InsulinTestSuite:
                 return {"error": f"API Error {response.status_code}: {response.text}"}
         
         except requests.exceptions.ConnectionError:
-            self.logger.error("Connection Error: Make sure the Flask app is running on localhost:5001")
+            self.logger.error(f"Connection Error: Make sure the Flask app is running on {ENDPOINT}")
             return {"error": "Connection Error: Flask app not running"}
         except Exception as e:
             self.logger.error(f"Request Error: {str(e)}")
@@ -382,12 +385,12 @@ def main():
     print("Automated Insulin Dose Recommendation System - Test Suite")
     print("=" * 60)
     print("This test suite will test various scenarios for insulin dose recommendations.")
-    print("Make sure the Flask application is running on localhost:5001")
+    print(f"Make sure the Flask application is running on {ENDPOINT}")
     print("=" * 60)
     
     # Check if Flask app is running
     try:
-        response = requests.get("http://localhost:5001", timeout=5)
+        response = requests.get(ENDPOINT, timeout=5)
         print("✓ Flask application is running")
     except requests.exceptions.ConnectionError:
         print("✗ Flask application is not running!")
